@@ -41,7 +41,7 @@ echo "install jupyter lab service"
 cd ~/AI/XavierNXSetup
 echo $password | sudo jupyter lab -y --generate-config
 echo $password | sudo python3 set_jupyter_password.py $password
-sudo -S python3 create_jupyter_service.py
+echo $password | sudo -S python3 create_jupyter_service.py
 echo $password | sudo mv xaviernx_jupyter.service /etc/systemd/system/xaviernx_jupyter.service
 sudo systemctl enable xaviernx_jupyter
 sudo systemctl start xaviernx_jupyter
