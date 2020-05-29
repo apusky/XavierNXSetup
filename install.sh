@@ -1,5 +1,7 @@
 #!/bin/sh
+#chmod +x install.sh #make file executable
 #./install.sh <password>
+
 set -e
 password=$1
 echo $password | sudo dpkg -i nomachine_6.10.12_1_arm64.deb
