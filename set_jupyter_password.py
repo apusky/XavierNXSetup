@@ -1,40 +1,25 @@
-import argparse
-import getpass
+# Script to create a password for the Jupyter notebook configuration
+# under the MIT licence by Romilly Cocking https://github.com/romilly/nano 
+
+
+import sys
+
+from notebook.auth import passwd
 import os
 
-JUPYTER_SERVICE_TEMPLATE = """
-[Unit]
-Description=Jupyter Notebook Service
-[Service]
-Type=simple
-User=%s
-ExecStart=/bin/sh -c "jupyter lab --ip=0.0.0.0 --no-browser"
-WorkingDirectory=%s
-Restart=always
-[Install]
-WantedBy=multi-user.target
-"""
+jupyter_config = os.path.expanduser('~/.jupyter/jupyter_notebook_config.py')
 
+if len(sys.argv) != 2:
+    print('usage: python3 set_jupyter_password <password>')
+    sys.exit(-1)
+pwhash = passwd(sys.argv[1])
 
-JUPYTER_SERVICE_NAME = 'nano_jupyter'
+jupyter_comment_start = "# Start of lines added by jupyter-password.py"
+jupyter_comment_end = "# End of lines added by jupyter-password.py"
+jupyter_passwd_line = "c.NotebookApp.password = '%s'" % (pwhash)
 
-
-def get_jupyter_service(working_directory):
-    assert(os.path.isdir(working_directory))
-    service_str = JUPYTER_SERVICE_TEMPLATE % (getpass.getuser(), working_directory)
-    return service_str
-
-
-if __name__ == '__main__':
-
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        '--working_directory',
-        type=str,
-        help='The directory for Jupyter Lab',
-        default=os.path.expanduser('~/nano'))
-    parser.add_argument('--output', default='nano_jupyter.service')
-    args = parser.parse_args()
-
-    with open(args.output, 'w') as f:
-        f.write(get_jupyter_service(args.working_directory))
+with open(jupyter_config, 'a') as file:
+    file.write('\n')
+    file.write(jupyter_comment_start + '\n')
+    file.write(jupyter_passwd_line + '\n')
+    file.write(jupyter_comment_end + '\n')
