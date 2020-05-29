@@ -16,7 +16,7 @@ WantedBy=multi-user.target
 """
 
 
-JUPYTER_SERVICE_NAME = 'nano_jupyter'
+JUPYTER_SERVICE_NAME = 'xaviernx_jupyter'
 
 
 def get_jupyter_service(working_directory):
@@ -33,7 +33,7 @@ if __name__ == '__main__':
         type=str,
         help='The directory for Jupyter Lab',
         default=os.path.expanduser('~/nano'))
-    parser.add_argument('--output', default='nano_jupyter.service')
+    parser.add_argument('--output', default='xaviernx_jupyter.service')
     args = parser.parse_args()
 
     with open(args.output, 'w') as f:
