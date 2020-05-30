@@ -7,7 +7,7 @@ password=$1
 echo $password | sudo dpkg -i nomachine_6.10.12_1_arm64.deb
 
 cd /home/xaviernx/
-mkdir AI
+#mkdir AI
 echo $password | sudo apt-get update
 
 #enable i2c permissions
