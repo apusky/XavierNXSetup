@@ -37,6 +37,10 @@ echo $password | sudo -S pip3 install flask
 echo $password | sudo -S pip3 install protobuf                                    
 #echo $password | sudo -S pip3 install -U --upgrade numpy
 
+# install traitlets (master)
+echo "---install trailets"
+echo $password | sudo -S python3 -m pip install git+https://github.com/ipython/traitlets@master
+
 #install jupyter lab
 echo "---install jupyter lab"
 echo $password | sudo -S apt install -y nodejs npm
