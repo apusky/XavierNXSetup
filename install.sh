@@ -51,7 +51,7 @@ echo $password | sudo -S jupyter labextension install @jupyter-widgets/jupyterla
 
 #install jupyter lab service
 echo "---install jupyter lab service"
-cd ~/AI/XavierNXSetup
+cd ~/AI/xaviernxsetup
 echo $password | sudo jupyter lab -y --generate-config
 echo $password | sudo python3 set_jupyter_password.py $password
 echo $password | sudo -S python3 create_jupyter_service.py
@@ -91,7 +91,7 @@ echo $password | sudo -S jupyter labextension install @jupyter-widgets/jupyterla
 
 #clone repository and install jupyter lab service
 echo "---install jupyter lab service" 
-cd ~/AI/XavierNXSetup
+cd ~/AI/xaviernxsetup
 jupyter lab --generate-config
 echo $password | sudo -S python3 set_jupyter_password.py $password
 echo $password | sudo -S python3 create_jupyter_service.py
