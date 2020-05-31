@@ -89,16 +89,6 @@ echo $password | sudo -S pip3 install .
 echo $password | sudo -S jupyter labextension install .
 echo $password | sudo -S jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
-#clone repository and install jupyter lab service
-echo "---install jupyter lab service" 
-cd ~/AI/XavierNXSetup
-jupyter lab --generate-config
-echo $password | sudo -S python3 set_jupyter_password.py $password
-echo $password | sudo -S python3 create_jupyter_service.py
-echo $password | sudo mv xaviernx_jupyter.service /etc/systemd/system/xaviernx_jupyter.service
-sudo systemctl enable xaviernx_jupyter
-sudo systemctl start xaviernx_jupyter
-
 #install jetcam
 echo "---install jetcam" 
 cd ~/AI
