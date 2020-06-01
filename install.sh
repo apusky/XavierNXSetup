@@ -73,7 +73,7 @@ echo $password | sudo pip3 install --pre --extra-index-url https://developer.dow
 
 #install pytorch
 echo "---install pytorch" 
-echo $password | sudo apt-get install libopenblas-base
+echo $password | sudo apt-get install libopenblas-base libopenmpi-dev 
 echo $password | sudo pip3 install Cython
 wget https://nvidia.box.com/shared/static/c3d7vm4gcs9m728j6o5vjay2jdedqb55.whl -O torch-1.4.0-cp36-cp36m-linux_aarch64.whl
 echo $password | sudo pip3 install torch-1.4.0-cp36-cp36m-linux_aarch64.whl
