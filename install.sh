@@ -10,6 +10,10 @@ cd ~
 #mkdir AI
 echo $password | sudo apt-get update
 
+#install nano
+echo "---install nano"
+sudo apt-get install nano
+
 #enable i2c permissions
 echo "---enable i2c permissions" 
 echo $password | sudo -S usermod -aG i2c $USER
