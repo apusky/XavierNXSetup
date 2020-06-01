@@ -9,6 +9,7 @@ echo $password | sudo dpkg -i nomachine_6.10.12_1_arm64.deb
 cd ~
 #mkdir AI
 echo $password | sudo apt-get update
+echo $password | sudo apt-get -y upgrade
 
 #install nano
 echo "---install nano"
