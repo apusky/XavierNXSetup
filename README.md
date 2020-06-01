@@ -11,5 +11,6 @@ Execute the following commands:
 ```  
 2. Execute install file with the sudo password as input, this password will be used to access jupyter lab too
 ```
- $ ./install.sh <password>
+  $ chmod +x install.sh //change permissions to execute file
+  $ ./install.sh <password>
 ```
