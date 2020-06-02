@@ -13,7 +13,7 @@ echo $password | sudo apt-get -y upgrade
 
 #install nano
 echo "---install nano"
-sudo apt-get install nano
+echo $password | sudo apt-get install nano
 
 #enable i2c permissions
 echo "---enable i2c permissions" 
