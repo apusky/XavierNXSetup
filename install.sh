@@ -78,6 +78,10 @@ echo $password | sudo -S pip3 install .
 echo $password | sudo -S jupyter labextension install .
 echo $password | sudo -S jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
+#downgrade ipywidgets to 7.4.2 to solve compatibility issues
+echo $password | sudo pip uninstall -y ipywidgets
+echo $password | sudo pip install ipywidgets==7.4.2
+
 #install tensorflow
 echo "---install tensorflow"
 echo $password | sudo -S apt-get -y install libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip libjpeg8-dev liblapack-dev libblas-dev gfortran
