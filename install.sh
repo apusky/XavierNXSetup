@@ -57,12 +57,26 @@ echo $password | sudo -S jupyter labextension install @jupyter-widgets/jupyterla
 #install jupyter lab service
 echo "---install jupyter lab service"
 cd ~/AI/XavierNXSetup
-echo $password | sudo jupyter lab -y --generate-config
+jupyter lab -y --generate-config
 echo $password | sudo python3 set_jupyter_password.py $password
 python3 create_jupyter_service.py #it need to be executed to create the service for the current user
 echo $password | sudo mv xaviernx_jupyter.service /etc/systemd/system/xaviernx_jupyter.service
 sudo systemctl enable xaviernx_jupyter
 sudo systemctl start xaviernx_jupyter
+
+#install jupyter clickable service
+echo "---install jupyter clickable service" 
+cd ~/AI
+echo $password | sudo -S npm install -g typescript
+git clone https://github.com/jaybdub/jupyter_clickable_image_widget
+cd jupyter_clickable_image_widget
+set +e #next command can fail
+echo $password | sudo -S python3 setup.py build
+set -e
+echo $password | sudo -S npm run build
+echo $password | sudo -S pip3 install .
+echo $password | sudo -S jupyter labextension install .
+echo $password | sudo -S jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
 #install tensorflow
 echo "---install tensorflow"
@@ -79,20 +93,6 @@ wget https://nvidia.box.com/shared/static/c3d7vm4gcs9m728j6o5vjay2jdedqb55.whl -
 echo $password | sudo pip3 install torch-1.4.0-cp36-cp36m-linux_aarch64.whl
 echo $password | sudo -S pip3 install -U torchvision
 rm torch-1.4.0-cp36-cp36m-linux_aarch64.whl
-
-#install jupyter clickable service
-echo "---install jupyter clickable service" 
-cd ~/AI
-echo $password | sudo -S npm install -g typescript
-git clone https://github.com/jaybdub/jupyter_clickable_image_widget
-cd jupyter_clickable_image_widget
-set +e #next command can fail
-echo $password | sudo -S python3 setup.py build
-set -e
-echo $password | sudo -S npm run build
-echo $password | sudo -S pip3 install .
-echo $password | sudo -S jupyter labextension install .
-echo $password | sudo -S jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
 #install jetcam
 echo "---install jetcam" 
