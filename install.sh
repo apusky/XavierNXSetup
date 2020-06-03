@@ -98,6 +98,14 @@ echo $password | sudo pip3 install torch-1.4.0-cp36-cp36m-linux_aarch64.whl
 echo $password | sudo -S pip3 install -U torchvision
 rm torch-1.4.0-cp36-cp36m-linux_aarch64.whl
 
+#install torch2trt
+echo "---install torch2trt" 
+cd ~/AI
+echo $password | sudo apt-get install -y ninja-build python-setuptools
+git clone https://github.com/NVIDIA-AI-IOT/torch2trt
+cd torch2trt
+echo $password | sudo python3 setup.py install
+
 #install jetcam
 echo "---install jetcam" 
 cd ~/AI
