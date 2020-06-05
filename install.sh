@@ -86,7 +86,8 @@ echo "---install tensorflow"
 echo $password | sudo -S apt-get -y install libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip libjpeg8-dev liblapack-dev libblas-dev gfortran
 echo $password | sudo pip3 install -U pip testresources setuptools
 echo $password | sudo pip3 install -U numpy==1.16.1 future==0.17.1 mock==3.0.5 h5py==2.9.0 keras_preprocessing==1.0.5 keras_applications==1.0.8 gast==0.2.2 futures protobuf pybind11
-echo $password | sudo pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v44 tensorflow
+echo $password | sudo pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v44 ‘tensorflow<2’
+#echo $password | sudo pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v44 tensorflow
 
 #install pytorch
 echo "---install pytorch" 
@@ -104,6 +105,9 @@ echo $password | sudo apt-get install -y ninja-build python-setuptools
 git clone https://github.com/NVIDIA-AI-IOT/torch2trt
 cd torch2trt
 echo $password | sudo python3 setup.py install
+
+#install keras
+echo $password | sudo apt-get install -y build-essential libatlas-base-dev 
 
 #install jetcam
 echo "---install jetcam" 
