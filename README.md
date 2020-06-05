@@ -9,7 +9,7 @@ Execute the following commands:
   $ git clone https://github.com/apusky/XavierNXSetup.git
   $ cd XavierNXSetup
 ```  
-2. Execute install file with the root <password> as input, this password will be used to access jupyter lab too
+2. Execute install file with the root password as input, this password will be used to access jupyter lab too
 ```
   $ chmod +x install.sh //change permissions to execute file
   $ ./install.sh <password>
