@@ -43,7 +43,8 @@ echo $password | sudo -S pip3 install protobuf
 
 # install traitlets (master)
 echo "---install trailets"
-echo $password | sudo -S python3 -m pip install git+https://github.com/ipython/traitlets@master
+#echo $password | sudo -S python3 -m pip install git+https://github.com/ipython/traitlets@master
+echo $password | sudo pip install traitlets
 
 #install jupyter lab
 echo "---install jupyter lab"
